@@ -15,22 +15,13 @@ public:
         ListNode* cur = head;
         ListNode* prev = nullptr;
 
-        while(cur != nullptr){ // if not tail
-            ListNode* tmp = cur->next;
+        while(cur){
+            ListNode* nxt = cur->next; // keep link to next
             cur->next = prev;
             prev = cur;
-            cur = tmp;
+            cur = nxt;
         }
-
-        // 1->2->3->nullptr
-        // nullptr<-1<-2<-3
-
-        // at each step along the chain, starting from head,
-        // we need to:
-        // 
-        // 
         return prev;
-
     }
 };
 
@@ -55,3 +46,24 @@ Solution s;
 
     return 0;
 }
+
+
+
+/*
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* cur = head;
+        ListNode* prev = nullptr;
+
+        while(cur != nullptr){ // if not tail
+            ListNode* tmp = cur->next; // store link to next so you can break without losing it
+            cur->next = prev;
+            prev = cur;
+            cur = tmp;
+        }
+        return prev;
+
+    }
+};
+ */
